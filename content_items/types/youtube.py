@@ -9,7 +9,7 @@ class YoutubeContentItem(ContentItem):
     video_id = models.CharField(max_length=30, help_text="YouTube video ID from after ?v= in URL")
 
     def extra_fields_dict(self):
-        return {'video_id': self.video_id}
+        return {'videoID': self.video_id}
 
     class Meta:
         verbose_name = 'YouTube video'
