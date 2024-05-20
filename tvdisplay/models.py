@@ -2,6 +2,8 @@ from django.db import models
 from polymorphic.models import PolymorphicModel
 from sortedm2m.fields import SortedManyToManyField
 
+from infokyllti.storage_backends import PrivateMediaStorage
+
 
 class ContentItem(PolymorphicModel):
     _content_type = None
@@ -11,7 +13,8 @@ class ContentItem(PolymorphicModel):
                                       help_text='If left blank, the content item is immediately valid.')
     valid_to = models.DateTimeField(blank=True, null=True,
                                     help_text='If left blank, the content item never expires.')
-    background_image = models.ImageField(upload_to='backgrounds', blank=True, null=True)
+    background_image = models.ImageField(upload_to='backgrounds', blank=True, null=True,
+                                         storage=PrivateMediaStorage())
     display_seconds = models.PositiveIntegerField(default=30, help_text='Seconds to display content item.')
     font_family = models.CharField(max_length=200, blank=True, null=True,
                                    help_text='Font name to override standard font. Must be installed on display.')

@@ -9,6 +9,10 @@ django-polymorphic = {ref = "v4.0.0a", git = "git+https://github.com/jazzband/dj
 pillow = "*"
 django-prose-editor = "*"
 django-sortedm2m = "*"
+whitenoise = "*"
+gunicorn = "*"
+mssql-django = "*"
+django-storages = {extras = ["s3"], version = "*"}
 
 [dev-packages]
 
