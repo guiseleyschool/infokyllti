@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+django-polymorphic = {ref = "v4.0.0a", git = "git+https://github.com/jazzband/django-polymorphic.git"}
+pillow = "*"
+django-prose-editor = "*"
+django-sortedm2m = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12"

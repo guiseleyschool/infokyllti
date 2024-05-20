@@ -1,0 +1,11 @@
+{% load static %}
+{
+  "contentList": [
+    {
+      "remoteURL": "{% static '' %}",
+      "contentType": "welcome",
+      "backgroundImage": "{% static 'tvdisplay/img/default.jpg' %}",
+      "displaySeconds": 60
+    }
+  ]
+}

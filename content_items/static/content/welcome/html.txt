@@ -1,0 +1,17 @@
+<article
+    class="content--welcome"
+    data-js="welcome.js"
+    data-css="welcome.min.css"
+>
+    <div class="background"></div>
+    <div class="maintext">
+        <div>
+            <h1>Welcome to your new display!</h1>
+            <p>
+                To get started, set up and assign content to the display with
+                ID: <span class="displayID strong"></span>.
+            </p>
+        </div>
+    </div>
+    <div class="logo">Powered by <b>Infokyllti</b></div>
+</article>

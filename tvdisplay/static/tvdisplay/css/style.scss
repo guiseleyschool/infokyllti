@@ -1,0 +1,133 @@
+@import "necolas--normalize-css/normalize";
+@import "yeun--open-color/open-color";
+@import "daneden--animate-css/animate";
+@import "ibm--plex/fonts";
+
+body {
+    background-color: $oc-gray-9;
+    overflow: hidden;
+    font-family: "IBM Plex Sans", sans-serif;
+}
+
+/*
+ * CLEARFIX
+ */
+
+footer::after,
+.clearfix::after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+main {
+    margin: 0;
+    border-width: 0;
+    cursor: none;
+    padding: 0;
+    width: 100%;
+    height: 1024px;
+    min-height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+article {
+    margin: 0;
+    background: no-repeat center center fixed;
+    background-size: cover;
+    padding: 0;
+    height: 100vh;
+    text-shadow: 1px 1px 2px rgba($oc-black, 0.7);
+    color: $oc-white;
+    font-size: 6vw;
+}
+
+.bg-image-contain {
+    background-size: contain;
+}
+
+footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    color: $oc-gray-9;
+
+    &:hover {
+        background-color: rgba($oc-gray-0, 0.5);
+    }
+
+    .float-left,
+    .float-right {
+        visibility: hidden;
+    }
+
+    &:hover .float-left,
+    &:hover .float-right {
+        visibility: visible;
+    }
+
+    strong {
+        padding-top: 6px;
+    }
+}
+
+.footer-btn {
+    border: 1px solid $oc-gray-5;
+    background-color: $oc-gray-0;
+    padding: 5px 10px;
+    color: $oc-gray-9;
+}
+
+/*
+ * BOOTSTRAP INSPIRED CLASSES
+ */
+
+$spacer: 0.25em;
+
+.m-0 {
+    margin: 0;
+}
+
+.mt-1 {
+    margin-top: $spacer;
+}
+
+.mr-1 {
+    margin-right: $spacer;
+}
+
+.mb-1 {
+    margin-bottom: $spacer;
+}
+
+.ml-1 {
+    margin-left: $spacer;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-nowrap {
+    white-space: nowrap;
+}
+
+.strong {
+    font-weight: 800;
+}
