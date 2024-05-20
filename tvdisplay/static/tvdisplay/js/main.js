@@ -244,7 +244,7 @@ const tvDisplay = (function () {
   }
 
   configFn_refresh(true);
-  window.setInterval(configFn_refresh, 10 * 60 * 1000);
+  window.setInterval(configFn_refresh, 5 * 60 * 1000);
 
   /*
    * SET UP KEYS
@@ -261,7 +261,7 @@ const tvDisplay = (function () {
         break;
 
       case 82: // r
-        configFn_refresh();
+        configFn_refresh(true);
         break;
 
       default:
@@ -271,7 +271,7 @@ const tvDisplay = (function () {
   document
     .getElementsByClassName("footer-btn-refresh")[0]
     .addEventListener("click", function () {
-      configFn_refresh(false);
+      configFn_refresh(true);
     });
 
   document
@@ -296,7 +296,7 @@ const tvDisplay = (function () {
     refresh: configFn_refresh,
     getContentProperty: getContentProperty,
     contentContainer: contentContainerEle,
-    displayID: displayID,
+    displayID: config,
 
     sanitizeText: function (possibleHTML) {
       const divEle = document.createElement("div");
