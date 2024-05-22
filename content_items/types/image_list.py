@@ -9,6 +9,9 @@ from tvdisplay.admin import ContentItemChildAdmin
 class ImageListContentItem(ContentItem):
     _content_type = 'imageList'
 
+    slide_display_seconds = models.PositiveIntegerField(default=10,
+                                                        help_text='Number of seconds to display each slide.')
+
     class Meta:
         verbose_name = 'image list'
 
@@ -17,7 +20,9 @@ class ImageListContentItem(ContentItem):
 
     def extra_fields_dict(self):
         return {
-            'backgroundImages': [item.image.url for item in self.imagelistitem_set.all()]
+            'backgroundImages': [item.image.url for item in self.imagelistitem_set.all()],
+            'slideSeconds': self.slide_display_seconds,
+            'displaySeconds': None
         }
 
 
@@ -34,3 +39,8 @@ class ImageListItemInline(admin.TabularInline):
 class ImageListContentItemAdmin(ContentItemChildAdmin):
     exclude = ['background_image']
     inlines = [ImageListItemInline]
+
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        form.base_fields['display_seconds'].widget = HiddenInput()
+        return form
