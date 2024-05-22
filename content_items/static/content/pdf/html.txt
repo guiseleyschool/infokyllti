@@ -1,0 +1,2 @@
+<article class="content--pdf" data-js="pdf.js" data-css="pdf.css">
+</article>
