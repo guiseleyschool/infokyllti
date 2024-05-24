@@ -10,7 +10,7 @@ class HtmlContentItem(ContentItem):
     body = ProseEditorField()
 
     def extra_fields_dict(self):
-        return {'body': self.body}
+        return {'innerHTML': self.body}
 
     class Meta:
         verbose_name = 'HTML page'
