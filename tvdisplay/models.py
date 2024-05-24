@@ -29,8 +29,8 @@ class ContentItem(PolymorphicModel):
             'contentType': self._content_type
         }
 
-        if self.valid_from: obj_dict['validFrom'] = self.valid_from
-        if self.valid_to: obj_dict['validTo'] = self.valid_to
+        if self.valid_from: obj_dict['validFrom'] = self.valid_from.isoformat()
+        if self.valid_to: obj_dict['validTo'] = self.valid_to.isoformat()
         if self.background_image: obj_dict['backgroundImage'] = self.background_image.url
         if self.font_family: obj_dict['fontFamily'] = self.font_family
 
