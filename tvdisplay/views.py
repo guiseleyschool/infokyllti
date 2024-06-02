@@ -29,6 +29,8 @@ def default_config(request):
 def display_config(request, display_id):
     try:
         display = Display.objects.get(pk=display_id)
+        display.last_seen = now()
+        display.save()
 
         if display.playlists.count() == 0:
             return render(request, 'tvdisplay/default_config.json')
@@ -46,6 +48,6 @@ def display_config(request, display_id):
 
         return HttpResponse(json.dumps(display_content), content_type='application/json')
     except Display.DoesNotExist:
-        display = Display(pk=display_id, name='Discovered Display %s' % display_id)
+        display = Display(pk=display_id, name='Discovered Display %s' % display_id, last_seen=now())
         display.save()
         raise Http404("Display not found")

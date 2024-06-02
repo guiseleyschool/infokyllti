@@ -1,4 +1,6 @@
+from datetime import timedelta
 from django.utils.module_loading import import_string
+from django.utils.timezone import now
 from django.contrib import admin
 from polymorphic.admin import PolymorphicParentModelAdmin, PolymorphicChildModelAdmin, PolymorphicChildModelFilter
 from tvdisplay.models import *
@@ -12,6 +14,14 @@ def file_to_class_name(filename):
 class DisplayAdmin(admin.ModelAdmin):
     list_display = ('name','id','online','last_seen')
     readonly_fields = ('id','online','last_seen')
+
+    def online(self, obj):
+        active_timeline = now() - timedelta(minutes=15)
+        try:
+            return (obj.last_seen >= active_timeline)
+        except TypeError:
+            return False
+    online.boolean = True
 
 
 @admin.register(Playlist)

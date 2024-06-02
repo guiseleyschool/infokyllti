@@ -2,8 +2,6 @@ from django.db import models
 from polymorphic.models import PolymorphicModel
 from sortedm2m.fields import SortedManyToManyField
 
-from infokyllti.storage_backends import PrivateMediaStorage
-
 
 class ContentItem(PolymorphicModel):
     _content_type = None
@@ -54,7 +52,6 @@ class Playlist(models.Model):
 class Display(models.Model):
     id = models.CharField(max_length=20, primary_key=True)
     name = models.CharField(max_length=50)
-    online = models.BooleanField(default=False)
     last_seen = models.DateTimeField(blank=True, null=True)
     playlists = SortedManyToManyField(Playlist, blank=True)
 
