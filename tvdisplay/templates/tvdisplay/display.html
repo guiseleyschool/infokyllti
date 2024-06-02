@@ -1,0 +1,36 @@
+{% load static %}
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+        />
+
+        <title>Infokyllti</title>
+
+        <link rel="stylesheet" type="text/css" href="{%  static 'tvdisplay/css/style.min.css' %}" />
+    </head>
+
+    <body>
+        <main></main>
+        <footer hidden>
+            <strong class="float-left"></strong>
+            <span class="float-right">
+                <button class="footer-btn footer-btn-refresh" type="button">
+                    &#x21bb; <u>R</u>efresh
+                </button>
+                <button class="footer-btn footer-btn-next" type="button">
+                    <u>N</u>ext &#x27a4;
+                </button>
+            </span>
+        </footer>
+
+        <script src="{%  static 'tvdisplay/js/jerrybendy--url-search-params-polyfill/index.min.js' %}"></script>
+        <script src="{%  static 'tvdisplay/js/js-cookie--js-cookie/js.cookie.min.js' %}"></script>
+        <script src="{%  static 'tvdisplay/js/axios--axios/axios.min.js' %}"></script>
+        <script src="{%  static 'tvdisplay/js/main.js' %}"></script>
+    </body>
+</html>

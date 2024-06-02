@@ -45,7 +45,7 @@ class Playlist(models.Model):
                                       help_text='If left blank, the playlist is immediately valid.')
     valid_to = models.DateTimeField(blank=True, null=True,
                                     help_text='If left blank, the playlist never expires.')
-    content_items = SortedManyToManyField(ContentItem)
+    content_items = SortedManyToManyField(ContentItem, blank=True)
 
     def __str__(self):
         return 'Playlist: %s' % self.name
@@ -56,7 +56,7 @@ class Display(models.Model):
     name = models.CharField(max_length=50)
     online = models.BooleanField(default=False)
     last_seen = models.DateTimeField(blank=True, null=True)
-    playlists = SortedManyToManyField(Playlist)
+    playlists = SortedManyToManyField(Playlist, blank=True)
 
     def __str__(self):
         return 'Display: %s (%s)' % (self.name, self.id)

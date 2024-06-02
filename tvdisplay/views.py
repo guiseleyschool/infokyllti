@@ -13,8 +13,13 @@ validity_filter = Q(
     & (Q(valid_to__isnull=True) | Q(valid_to__gte=now()))
 )
 
+
 def home(request):
     return render(request, 'tvdisplay/home.html')
+
+
+def display_view(request):
+    return render(request, 'tvdisplay/display.html')
 
 
 def default_config(request):

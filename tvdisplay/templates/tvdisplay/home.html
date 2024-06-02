@@ -12,25 +12,59 @@
         <title>Infokyllti</title>
 
         <link rel="stylesheet" type="text/css" href="{%  static 'tvdisplay/css/style.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{%  static 'content/welcome/welcome.min.css' %}" />
+        <style>
+            .content--welcome {
+                background-image: url({% static 'tvdisplay/img/welcome.jpg' %});
+            }
+
+            kbd {
+                border: solid 1px white;
+                padding: 5px 10px;
+                border-radius: 2px;
+                font-size: 0.8em;
+            }
+        </style>
     </head>
 
     <body>
-        <main></main>
-        <footer hidden>
-            <strong class="float-left"></strong>
-            <span class="float-right">
-                <button class="footer-btn footer-btn-refresh" type="button">
-                    &#x21bb; <u>R</u>efresh
-                </button>
-                <button class="footer-btn footer-btn-next" type="button">
-                    <u>N</u>ext &#x27a4;
-                </button>
-            </span>
-        </footer>
+        <main>
+            <article id="welcome" class="content--welcome">
+                <div class="background"></div>
+                <div class="maintext">
+                    <div>
+                        <h1>Welcome to Infokyllti.</h1>
+                        <p>This display will start automatically in <span id="seconds">10 seconds</span>,
+                            or you can press <kbd>A</kbd> to access Administration.</p>
+                    </div>
+                </div>
+                <div class="logo">Powered by <b>Infokyllti</b></div>
+            </article>
+        </main>
 
-        <script src="{%  static 'tvdisplay/js/jerrybendy--url-search-params-polyfill/index.min.js' %}"></script>
-        <script src="{%  static 'tvdisplay/js/js-cookie--js-cookie/js.cookie.min.js' %}"></script>
-        <script src="{%  static 'tvdisplay/js/axios--axios/axios.min.js' %}"></script>
-        <script src="{%  static 'tvdisplay/js/main.js' %}"></script>
+    <script>
+        for (let i = 1; i <= 100; i++) {
+            window.welcome.innerHTML +=
+              "<div class='circle-container'><div class='circle'></div></div>";
+        }
+
+        function checkKeyPressed(evt) {
+            if (evt.keyCode == "65") {
+                window.location.href = "{% url 'admin:index' %}";
+            }
+        }
+        window.addEventListener("keydown", checkKeyPressed, false);
+
+        let seconds = 10;
+        function tick() {
+            seconds--;
+            if (seconds == 0) {
+                window.location.href = "{% url 'display' %}" + window.location.search;
+            } else {
+                window.seconds.innerHTML = seconds + ' second' + (seconds === 1 ? '' : 's');
+            }
+        }
+        window.setInterval(tick, 1000);
+    </script>
     </body>
 </html>

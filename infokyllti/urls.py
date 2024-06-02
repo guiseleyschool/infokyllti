@@ -28,6 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('config/default.json', default_config),
     path('config/<str:display_id>.json', display_config),
+    path('display', display_view, name='display'),
     path('', home, name='home')
 ]
 
