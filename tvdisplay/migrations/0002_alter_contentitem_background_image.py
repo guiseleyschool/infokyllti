@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='contentitem',
             name='background_image',
-            field=models.ImageField(blank=True, null=True, storage=infokyllti.storage_backends.PrivateMediaStorage(), upload_to='backgrounds'),
+            field=models.ImageField(blank=True, null=True, upload_to='backgrounds'),
         ),
     ]

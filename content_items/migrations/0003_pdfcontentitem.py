@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
             name='PdfContentItem',
             fields=[
                 ('contentitem_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='tvdisplay.contentitem')),
-                ('pdf_file', models.FileField(storage=infokyllti.storage_backends.PrivateMediaStorage(), upload_to='pdfs', validators=[django.core.validators.FileExtensionValidator(allowed_extensions=['pdf'])], verbose_name='PDF file')),
+                ('pdf_file', models.FileField(upload_to='pdfs', validators=[django.core.validators.FileExtensionValidator(allowed_extensions=['pdf'])], verbose_name='PDF file')),
             ],
             options={
                 'verbose_name': 'PDF file',

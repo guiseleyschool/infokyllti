@@ -1,7 +1,6 @@
 from django.core.validators import FileExtensionValidator
 from django.db import models
 
-from infokyllti.storage_backends import PrivateMediaStorage
 from tvdisplay.models import ContentItem
 from tvdisplay.admin import ContentItemChildAdmin
 
@@ -11,8 +10,7 @@ class VideoContentItem(ContentItem):
 
     video = models.FileField(upload_to='videos',
                              validators=[
-                                 FileExtensionValidator(allowed_extensions=['mov', 'avi', 'mp4', 'webm', 'mkv'])],
-                             storage=PrivateMediaStorage())
+                                 FileExtensionValidator(allowed_extensions=['mov', 'avi', 'mp4', 'webm', 'mkv'])])
     muted = models.BooleanField(default=True)
 
     def extra_fields_dict(self):

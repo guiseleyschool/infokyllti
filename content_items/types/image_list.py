@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.db import models
 
-from infokyllti.storage_backends import PrivateMediaStorage
 from tvdisplay.models import ContentItem
 from tvdisplay.admin import ContentItemChildAdmin
 
@@ -28,7 +27,7 @@ class ImageListContentItem(ContentItem):
 
 class ImageListItem(models.Model):
     content_item = models.ForeignKey(ImageListContentItem, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='image_list_images', storage=PrivateMediaStorage())
+    image = models.ImageField(upload_to='image_list_images')
     priority = models.PositiveSmallIntegerField(default=0)
 
 

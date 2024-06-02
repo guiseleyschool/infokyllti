@@ -15,11 +15,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='imagelistitem',
             name='image',
-            field=models.ImageField(storage=infokyllti.storage_backends.PrivateMediaStorage(), upload_to='image_list_images'),
+            field=models.ImageField(upload_to='image_list_images'),
         ),
         migrations.AlterField(
             model_name='videocontentitem',
             name='video',
-            field=models.FileField(storage=infokyllti.storage_backends.PrivateMediaStorage(), upload_to='videos', validators=[django.core.validators.FileExtensionValidator(allowed_extensions=['mov', 'avi', 'mp4', 'webm', 'mkv'])]),
+            field=models.FileField(upload_to='videos', validators=[django.core.validators.FileExtensionValidator(allowed_extensions=['mov', 'avi', 'mp4', 'webm', 'mkv'])]),
         ),
     ]

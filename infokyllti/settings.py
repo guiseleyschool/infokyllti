@@ -108,7 +108,7 @@ if USE_S3:
     AWS_S3_SIGNATURE_VERSION = 's3v4'
     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
     MEDIA_URL = f'{AWS_S3_ENDPOINT_URL}/{AWS_STORAGE_BUCKET_NAME}/'
-    MEDIAFILES_STORAGE = 'infokyllti.storage_backends.PrivateMediaStorage'
+    DEFAULT_FILE_STORAGE = 'infokyllti.storage_backends.PrivateMediaStorage'
 else:
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
