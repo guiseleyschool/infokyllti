@@ -1,4 +1,4 @@
-FROM python:3.12-slim
+FROM python:3.11-slim
 
 WORKDIR /app
 
@@ -9,6 +9,7 @@ ARG GID=1000
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends build-essential curl wget git libpq-dev gnupg \
+  && apt-get install -y --no-install-recommends python3-dev default-libmysqlclient-dev pkg-config \
   && wget -c https://github.com/nicolas-van/multirun/releases/download/1.1.3/multirun-x86_64-linux-gnu-1.1.3.tar.gz -O - | tar -xz \
   && mv multirun /bin \
   && wget https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \

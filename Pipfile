@@ -13,8 +13,9 @@ whitenoise = "*"
 gunicorn = "*"
 mssql-django = "*"
 django-storages = {extras = ["s3"], version = "*"}
+mysqlclient = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.12"
+python_version = "3.11"
