@@ -1,5 +1,12 @@
+.content--pdf {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .content--pdf canvas {
     display: block;
-    height: 100vh;
+    max-height: 100vh;
+    max-width: 100vh
     margin: 0 auto;
 }
