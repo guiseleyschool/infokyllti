@@ -32,7 +32,12 @@ def display_config(request, display_id):
         display.last_seen = now()
         display.save()
 
-        if display.playlists.count() == 0:
+        # Get all valid playlists
+        valid_playlists = display.playlists.filter(validity_filter)
+        override_playlists = valid_playlists.filter(override=True)
+        playlists_to_use = override_playlists if override_playlists.exists() else valid_playlists
+
+        if playlists_to_use.count() == 0:
             return render(request, 'tvdisplay/default_config.json')
 
         display_content = {
@@ -42,7 +47,7 @@ def display_config(request, display_id):
             'contentList': []
         }
 
-        for playlist in display.playlists.filter(validity_filter).all():
+        for playlist in playlists_to_use.all():
             for ci in playlist.content_items.filter(validity_filter).all():
                 display_content['contentList'].append(ci.to_dict())
 

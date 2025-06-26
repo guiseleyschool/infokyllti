@@ -26,7 +26,7 @@ class DisplayAdmin(admin.ModelAdmin):
 
 @admin.register(Playlist)
 class PlaylistAdmin(admin.ModelAdmin):
-    list_display = ('name','valid_from','valid_to')
+    list_display = ('name','valid_from','valid_to','override')
     fieldsets = (
         (
             None,
@@ -38,7 +38,7 @@ class PlaylistAdmin(admin.ModelAdmin):
             "Advanced options",
             {
                 "classes": ["collapse"],
-                "fields": ["valid_from", "valid_to"],
+                "fields": ["valid_from", "valid_to", "override"],
             },
         ),
     )

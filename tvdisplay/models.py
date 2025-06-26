@@ -43,6 +43,8 @@ class Playlist(models.Model):
                                       help_text='If left blank, the playlist is immediately valid.')
     valid_to = models.DateTimeField(blank=True, null=True,
                                     help_text='If left blank, the playlist never expires.')
+    override = models.BooleanField(default=False,
+                                   help_text='If ticked, this playlist, when assigned and valid, will override any other playlist for that display.')
     content_items = SortedManyToManyField(ContentItem, blank=True)
 
     def __str__(self):
