@@ -62,24 +62,13 @@ tvDisplay.tvContent = (function() {
 
   function updateClockDisplay() {
 
-    let t = new Date(Date.now() - timeOffsetMilliseconds),
-      tod = "AM",
-      hr = t.getHours();
+    let t = new Date(Date.now() - timeOffsetMilliseconds);
 
-    if (hr >= 12) {
-      tod = "PM";
-      if (hr > 12) {
-        hr -= 12;
-      }
-    } else if (hr === 0) {
-      hr = 12;
-    }
-
-    timeEle.innerHTML = hr + ":" + padNumber(t.getMinutes()) +
+    timeEle.innerHTML = padNumber(t.getHours()) + ":" + padNumber(t.getMinutes()) +
       (includeSeconds ? ":" + padNumber(t.getSeconds()) : "") +
       " " + tod;
 
-    dateEle.innerHTML = dayOfWeekArray[t.getDay()] + ",<br /><span class=\"text-nowrap\">" + monthArray[t.getMonth()] + " " + t.getDate() + ",</span> " + t.getFullYear();
+    dateEle.innerHTML = dayOfWeekArray[t.getDay()] + ",<br /><span class=\"text-nowrap\">" + t.getDate() + " " + monthArray[t.getMonth()] + "</span> " + t.getFullYear();
   }
 
 
