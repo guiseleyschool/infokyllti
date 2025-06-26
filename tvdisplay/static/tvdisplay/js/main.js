@@ -220,11 +220,21 @@ const tvDisplay = (function () {
         return response.data;
       })
       .then(function (responseJSON) {
+        const oldContentList = contentList;
+        const oldContentIndex = contentIndex;
+        
         contentList = responseJSON.contentList || [];
         contentDefaults = responseJSON.contentDefaults || {};
         displayDefaults = responseJSON.displayDefaults || {};
 
-        if (doContentDisplay) {
+        // Check if current item still exists anywhere in the new content list
+        let currentItemStillExists = false;
+        if (oldContentIndex >= 0 && oldContentIndex < oldContentList.length) {
+          const currentItem = oldContentList[oldContentIndex];
+          currentItemStillExists = contentList.includes(currentItem);
+        }
+
+        if (doContentDisplay || !currentItemStillExists) {
           contentFn_next();
         }
       })
@@ -244,7 +254,7 @@ const tvDisplay = (function () {
   }
 
   configFn_refresh(true);
-  window.setInterval(configFn_refresh, 5 * 60 * 1000);
+  window.setInterval(configFn_refresh, 60 * 1000);
 
   /*
    * SET UP KEYS
